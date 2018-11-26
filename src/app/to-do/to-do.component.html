@@ -1,0 +1,26 @@
+<div class="jumbotron" style= "padding:45px">
+  <h4 class="text-center">To-Do List Application</h4>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" #taskTitle>
+  <div class="input-group-addon hover-cursor" (click)= "addTask(taskTitle)">
+    <i class="fa fa-plus-circle fa-2x"></i>
+  </div>
+</div>
+
+<div style="margin:5px 0px">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let node of todoListArray">
+      <span class="hover-cursor" [class.text-success]="node.isDone" 
+      (click)="toggleCheck(node.id, node.isDone)">
+        <i class="fa fa-lg" [ngClass]="node.isDone?'fa-check-circle-o':'fa-circle-thin'"></i>
+      </span>
+      {{node.title}}
+      <span class="hover-cursor text-danger pull-right"
+        (click)="deleteTask(node.id)">
+        <i class="fa fa-trash-o fa-lg"></i>
+      </span>
+    </li>
+  </ul>
+</div>
